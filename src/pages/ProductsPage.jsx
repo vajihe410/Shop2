@@ -5,12 +5,13 @@ import { useProducts } from '../context/ProductsProvider'
 import styles from './ProductsPage.module.css'
 //componets
 import Card from '../components/Card'
+import Loader from '../components/Loader'
 
 function ProductsPage() {
   const products = useProducts()
-  console.log(products)
   return (
     <div className={styles.container}>
+      {!products.length && <Loader/> }
       <div className={styles.products}>
         {products.map(product =><Card key={product.id} product={product}/> )}
       </div>
