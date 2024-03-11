@@ -2,11 +2,13 @@ import React from 'react'
 //icons
 import { FaListUl } from "react-icons/fa";
 //styles
-import styles from "../pages/ProductsPage.module.css"
+import styles from "./Sidebar.module.css"
 //functions
 import { createQueryObject } from '../helpers/helper';
+//constants
+import { categories } from '../constants/list';
 
-function Sidebar({setQuery}) {
+function Sidebar({query , setQuery}) {
 
   const categoriesHandler = (event) => {
     const {tagName} = event.target
@@ -22,11 +24,11 @@ function Sidebar({setQuery}) {
       <p>Categories</p>
     </div>
     <ul onClick={categoriesHandler}>
-      <li>All</li>
-      <li>Electronics</li>
-      <li>Jewelery</li>
-      <li>Men's Clothing</li>
-      <li>Woman's Clothong</li>
+        {categories.map(item => (
+            <li 
+            key={item.id} 
+            className={item.type.toLowerCase() === query.category ? styles.selected : null}>
+            {item.type}</li>))}
     </ul>
     </div>
   )

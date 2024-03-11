@@ -45,7 +45,7 @@ function ProductsPage() {
       <div className={styles.products}>
         {showProducts.map(product =><Card key={product.id} product={product}/> )}
       </div>
-     <Sidebar setQuery={setQuery}/>
+     <Sidebar query={query} setQuery={setQuery}/>
     </div>
     </>
 
