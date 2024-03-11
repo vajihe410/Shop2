@@ -7,11 +7,12 @@ import styles from './ProductsPage.module.css'
 //componets
 import Card from '../components/Card'
 import Loader from '../components/Loader'
-//icons
-import { ImSearch } from "react-icons/im";
-import { FaListUl } from "react-icons/fa";
+import SearchBox from '../components/SearchBox'
+import Sidebar from '../components/Sidebar'
+
 //functions
-import { createQueryObject, filterProducts, searchProducts, getInitialQuery } from '../helpers/helper'
+import { filterProducts, searchProducts, getInitialQuery } from '../helpers/helper'
+
 
 function ProductsPage() {
   const products = useProducts()
@@ -36,42 +37,15 @@ function ProductsPage() {
  
   },[query])
 
-  const SearchHandler = () => {
-    setQuery(query => (createQueryObject(query,{search})))
-  }
-  const categoriesHandler = (event) => {
-    
-    const {tagName} = event.target
-    const category = event.target.innerText.toLowerCase()
-  
-    if(tagName !== "LI") return
-
-    setQuery(query => (createQueryObject(query,{category})))
-  }
   return (
     <>
-      <div>
-        <input placeholder='Search...' type='text' value={search} onChange={(event) => setSearch(event.target.value.toLowerCase().trim())}/>
-        <button onClick={SearchHandler}><ImSearch /></button>
-      </div>
+      <SearchBox search={search} setSearch={setSearch} setQuery={setQuery}/>
       <div className={styles.container}>
       {!showProducts.length && <Loader/> }
       <div className={styles.products}>
         {showProducts.map(product =><Card key={product.id} product={product}/> )}
       </div>
-      <div className={styles.sidebar}>
-      <div>
-        <FaListUl/>
-        <p>Categories</p>
-      </div>
-      <ul onClick={categoriesHandler}>
-        <li>All</li>
-        <li>Electronics</li>
-        <li>Jewelery</li>
-        <li>Men's Clothing</li>
-        <li>Woman's Clothong</li>
-      </ul>
-      </div>
+     <Sidebar setQuery={setQuery}/>
     </div>
     </>
 
