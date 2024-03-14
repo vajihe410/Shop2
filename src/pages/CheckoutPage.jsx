@@ -9,6 +9,11 @@ function CheckoutPage() {
   const clickHandler = (type,payload) => {
     dispach({type,payload})
   }
+  if(state.itemsCounter){
+    return(<div>
+      <p>Empty</p>
+    </div>)
+  }
   return (
     <div>
       <div></div>
