@@ -1,16 +1,24 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 //icons
 import { TbListDetails } from "react-icons/tb";
 import { TbShoppingBagCheck } from "react-icons/tb";
+import { MdDeleteOutline } from "react-icons/md";
 //funstions 
-import { shorten } from '../helpers/helper';
+import { productQuantity, shorten } from '../helpers/helper';
 //styles
 import styles from './Card.module.css'
+import { useCart } from '../context/CartProvider';
 
 function Card({product}) {
 
   const {image,title,price,id} = product
+  const [state,dispath] = useCart()
+  const quantity = productQuantity(state,id)
+
+  const clickHandler = (type) =>{
+    dispath({type:type,payload:product})
+  }
   return (
     <div className={styles.card}>
         <img  src={image} alt={title}/>
@@ -21,9 +29,16 @@ function Card({product}) {
               <TbListDetails/>
             </Link>
             <div>
-              <button>
-                <TbShoppingBagCheck/>
-              </button>
+              {
+                quantity===0 ? <button  onClick={()=>clickHandler("ADD")}><TbShoppingBagCheck/></button> 
+                :<>
+                  <button onClick={()=>clickHandler("INCREASE")}>+</button>{!!quantity && <span>{quantity}</span>}
+                  {quantity === 1 ? <button onClick={()=>clickHandler("DELETE")}><MdDeleteOutline/></button> : <button onClick={()=>clickHandler("DECREASE")}>-</button>}
+                  
+                </>
+
+              }
+
             </div>
         </div>
     </div>

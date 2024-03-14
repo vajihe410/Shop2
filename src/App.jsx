@@ -6,18 +6,22 @@ import DetailsPage from "./pages/DetailsPage"
 import CheckoutPage from "./pages/CheckoutPage"
 //context
 import ProductsProvider from "./context/ProductsProvider";
+import CartProvider from "./context/CartProvider"
 
 function App() {
   return (
-    <ProductsProvider>
-      <Routes>
-        <Route index path="/" element={<Navigate to="/products"  replace/>} />
-        <Route path="/products" element={<ProductsPage/>} />
-        <Route path="/products/:id" element={<DetailsPage/>} />
-        <Route path="/checkout" element={<CheckoutPage/>} />
-        <Route path="/*" element={<NotFoundPage/>} />
-        </Routes>
-    </ProductsProvider>
+    <CartProvider>
+      <ProductsProvider>
+        <Routes>
+          <Route index path="/" element={<Navigate to="/products"  replace/>} />
+          <Route path="/products" element={<ProductsPage/>} />
+          <Route path="/products/:id" element={<DetailsPage/>} />
+          <Route path="/checkout" element={<CheckoutPage/>} />
+          <Route path="/*" element={<NotFoundPage/>} />
+          </Routes>
+      </ProductsProvider>
+    </CartProvider>
+
   )
 }
 
