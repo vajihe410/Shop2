@@ -4,7 +4,7 @@ import { shorten } from '../helpers/helper'
 //icons
 import { MdDeleteOutline } from "react-icons/md";
 //styles
-import styles from './BasketCard/module.css'
+import styles from './BasketCard.module.css'
 
 function BasketCard({data,clickHandler}) {
  

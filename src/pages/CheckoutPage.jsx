@@ -5,7 +5,7 @@ import { useCart } from '../context/CartProvider'
 import BasketCard from '../components/BasketCard'
 import BasketSidebar from '../components/BasketSidebar'
 //styles
-import styles from './CheckoutPage/module.css'
+import styles from './CheckoutPage.module.css'
 
 function CheckoutPage() {
   const [state,dispach]= useCart()

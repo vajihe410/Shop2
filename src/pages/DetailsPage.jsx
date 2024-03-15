@@ -23,7 +23,7 @@ function DetailsPage() {
       <div className={styles.information}>
         <h3 className={styles.title}>{product.title}</h3>
         <p className={styles.description}>{product.description}</p>
-        <p className={styles.price}><SiOpenproject/>{product.category}</p>
+        <p className={styles.category}><SiOpenproject/>{product.category}</p>
         <div>
           <span><IoMdPricetag/>{product.price} $ </span>
           <Link to='/products'><FaArrowLeft/><span>Back to shop</span></Link>
