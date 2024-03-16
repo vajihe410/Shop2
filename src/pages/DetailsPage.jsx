@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 //hooks
-import { useProductDetails } from '../context/ProductsProvider'
+/* import { useProductDetails } from '../context/ProductsProvider' */
+import { useDispatch, useSelector } from 'react-redux'
 //components
 import Loader from '../components/Loader'
 //icons
@@ -10,12 +11,19 @@ import {SiOpenproject} from 'react-icons/si'
 import {IoMdPricetag} from 'react-icons/io'
 //styles
 import styles from './DetailsPage.module.css'
+//fetch
+import { fetchProducts } from '../features/Product/productSlice'
 
 function DetailsPage() {
   const {id} = useParams()
-  const product = useProductDetails(+id)
+  /* const product = useProductDetails(+id) */
+  const product  = useSelector((store) => store.products.products.find(item => item.id === +id))
+  const dispatch = useDispatch()
 
   if(!product) return <Loader/>
+  useEffect(()=>{
+    dispatch(fetchProducts())
+},[])
 
   return (
     <div className={styles.container}>
