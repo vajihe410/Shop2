@@ -17,7 +17,7 @@ function Layout({children}) {
             <Link to='/checkout'>
                 <div>
                     <SlBasket/>
-                    {!!state.itemsCounter && <span>{state.itemsCounter}</span> }
+                    {!state.itemsCounter && <span>{state.itemsCounter}</span> }
                 </div>
             </Link>
         </header>
