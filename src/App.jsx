@@ -7,13 +7,13 @@ import CheckoutPage from "./pages/CheckoutPage"
 //layout
 import Layout from "./layout/Layout"
 //context
-import ProductsProvider from "./context/ProductsProvider";
+/* import ProductsProvider from "./context/ProductsProvider";
 import CartProvider from "./context/CartProvider"
-
+ */
 function App() {
   return (
-    <CartProvider>
-          <ProductsProvider>
+   /*  <CartProvider>
+          <ProductsProvider> */
               <Layout>
                 <Routes>
                 <Route index path="/" element={<Navigate to="/products"  replace/>} />
@@ -23,10 +23,8 @@ function App() {
                 <Route path="/*" element={<NotFoundPage/>} />
               </Routes>
              </Layout>
-          </ProductsProvider>
-        </CartProvider>
- 
-
+       /*    </ProductsProvider>
+        </CartProvider> */
   )
 }
 

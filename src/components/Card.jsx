@@ -8,16 +8,17 @@ import { MdDeleteOutline } from "react-icons/md";
 import { productQuantity, shorten } from '../helpers/helper';
 //styles
 import styles from './Card.module.css'
-import { useCart } from '../context/CartProvider';
+/* import { useCart } from '../context/CartProvider'; */
 
 function Card({product}) {
 
   const {image,title,price,id} = product
-  const [state,dispath] = useCart()
-  const quantity = productQuantity(state,id)
+  /* const [state,dispath] = useCart() */
+  /* const quantity = productQuantity(state,id) */
+  const quantity =0;
 
   const clickHandler = (type) =>{
-    dispath({type:type,payload:product})
+    /* dispath({type:type,payload:product}) */
   }
   return (
     <div className={styles.card}>

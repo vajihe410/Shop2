@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom'
 import {FaHeart} from 'react-icons/fa'
 import {SlBasket} from 'react-icons/sl'
 //context
-import { useCart } from '../context/CartProvider'
+/* import { useCart } from '../context/CartProvider' */
 //styles
 import styles from './Layout.module.css'
 
 function Layout({children}) {
-    const [state] = useCart()
+   /*  const [state] = useCart() */
   return (
     <>
         <header className={styles.header}>
@@ -17,7 +17,7 @@ function Layout({children}) {
             <Link to='/checkout'>
                 <div>
                     <SlBasket/>
-                    {!state.itemsCounter && <span>{state.itemsCounter}</span> }
+                    {/* {!state.itemsCounter && <span>{state.itemsCounter}</span> } */}
                 </div>
             </Link>
         </header>
