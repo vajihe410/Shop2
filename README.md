@@ -9,6 +9,10 @@
 #### npm install 
 #### npm install axios
 #### npm install react-router-dom
+#### npm install react-icons
+#### npm install react-loader-spinner
+#### npm install react-redux
+#### npm install react-router-dom
 
 ## Usage
 #### First, run the development server:npm run dev Open http://localhost:5173 with your browser to see the result.
