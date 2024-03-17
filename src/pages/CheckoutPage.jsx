@@ -1,4 +1,5 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 //context
 /* import { useCart } from '../context/CartProvider' */
 //components
@@ -8,11 +9,14 @@ import BasketSidebar from '../components/BasketSidebar'
 import styles from './CheckoutPage.module.css'
 
 function CheckoutPage() {
+  const state = useSelector(store => store.cart)
+ 
   /* const [state,dispach]= useCart() */
  /*  const clickHandler = (type,payload) => {
     dispach({type,payload}) 
   } */
-  if(state.itemsCounter){
+
+  if(!state.itemsCounter){
     return(<div className={styles.container}>
       <p>Empty</p>
     </div>)
@@ -23,6 +27,10 @@ function CheckoutPage() {
    {/*    <div className={styles.products}>
         {state.selectedItems.map(product =><BasketCard key={product.id} data={product} clickHandler={clickHandler}/> )}
       </div> */}
+         <BasketSidebar state={state} /* clickHandler= {clickHandler} */  /> 
+          <div className={styles.products}>
+        {state.selectedItems.map(product =><BasketCard key={product.id} data={product} /* clickHandler={clickHandler} */ /> )}
+      </div> *
     </div>
   )
 }

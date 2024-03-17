@@ -49,4 +49,11 @@ const productQuantity = (state,id) =>{
     return state.selectedItems[index].quantity
   }
 }
-export {shorten ,searchProducts ,filterProducts, createQueryObject ,getInitialQuery, sumProducts,productQuantity}
+const sumPrice = (products) => {
+  return  products.reduce((acc,cur)=> acc + cur.price * cur.quantity ,0).toFixed(2)
+  
+}
+const sumQuantity = (products) => {
+  return products.reduce((acc,cur) =>acc + cur.quantity ,0)
+}
+export {shorten ,searchProducts ,filterProducts, createQueryObject ,getInitialQuery, sumProducts,productQuantity , sumPrice,sumQuantity}
